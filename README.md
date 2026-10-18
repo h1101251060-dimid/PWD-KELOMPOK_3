@@ -150,11 +150,11 @@ Admin dapat mengelola produk, stok, dan pesanan pelanggan melalui halaman admin.
 Customer dapat melacak perkembangan pesanan menggunakan nomor pesanan yang diperoleh setelah melakukan checkout. Melalui fitur ini, customer dapat mengetahui tahapan pemrosesan pesanan, mulai dari pesanan diproses oleh admin, dikirim, hingga selesai.
 
 **Fitur:**
--Memasukkan nomor pesanan untuk melakukan pelacakan.
--Menampilkan informasi nomor pesanan.
--Menampilkan ringkasan pesanan.
--Menampilkan status terkini pesanan.
--Menampilkan tahapan status pesanan, yaitu Diproses, Dikirim, dan Selesai.
+- Memasukkan nomor pesanan untuk melakukan pelacakan.
+- Menampilkan informasi nomor pesanan.
+- Menampilkan ringkasan pesanan.
+- Menampilkan status terkini pesanan.
+- Menampilkan tahapan status pesanan, yaitu Diproses, Dikirim, dan Selesai.
 
 **Validasi:**
 1. Customer harus memasukkan nomor pesanan untuk melakukan pelacakan.
