@@ -3,7 +3,7 @@
 
 ### Tujuan Aplikasi
 
-Membantu pelanggan membeli produk baju secara online dengan menyediakan fitur katalog produk, pencarian produk, keranjang belanja, checkout, serta informasi status pesanan. Admin dapat mengelola produk, stok, dan pesanan melalui halaman admin.
+Membantu pelanggan membeli produk baju secara online dengan menyediakan fitur katalog produk, pencarian produk, keranjang belanja, checkout, serta informasi dan pelacakan status pesanan. Admin dapat mengelola produk, stok, dan pesanan melalui halaman admin.
 
 Sebelum masuk ke HTML, CSS, dan jQuery, kita perlu memahami terlebih dahulu apa yang ingin dibuat, siapa yang akan menggunakannya, dan fitur apa saja yang dibutuhkan.
 
@@ -93,26 +93,32 @@ Customer dapat melakukan checkout dengan mengisi data pembelian berupa nama leng
 9. Jika data valid, sistem menyimpan pesanan.
 10. Setelah pesanan berhasil dibuat, sistem menampilkan nomor pesanan kepada customer.
 
-#### d. Use Case 4 (UC-04): Melihat Pesanan
+#### d. Use Case 4 (UC-04): Melihat dan Melacak Pesanan
 
-Customer dapat melihat informasi dan status pesanan menggunakan nomor pesanan yang diperoleh setelah melakukan checkout.
+Customer dapat melihat informasi dan melacak status pesanan menggunakan nomor pesanan yang diperoleh setelah melakukan checkout.
 
 Status pesanan terdiri dari **Diproses, Dikirim, dan Selesai**.
 
 **Fitur:**
 - Memasukkan nomor pesanan.
+- Melihat informasi nomor pesanan.
 - Melihat detail produk yang dipesan.
 - Melihat jumlah produk.
 - Melihat total pembayaran.
-- Melihat status pesanan.
+- Melihat status terkini pesanan.
+- Melihat tahapan status pesanan, yaitu Diproses, Dikirim, dan Selesai.
 
 **Validasi:**
-1. Customer harus memasukkan nomor pesanan.
-2. Sistem menampilkan informasi pesanan berdasarkan nomor pesanan yang dimasukkan.
-3. Sistem menampilkan produk yang dipesan dan jumlahnya.
-4. Sistem menampilkan total pembayaran.
-5. Sistem menampilkan status terbaru dari pesanan.
-6. Jika nomor pesanan tidak ditemukan, sistem menampilkan pesan bahwa pesanan tidak tersedia.
+1. Customer harus memasukkan nomor pesanan untuk melihat pesanan.
+2. Sistem memeriksa apakah nomor pesanan tersedia.
+3. Jika nomor pesanan ditemukan, sistem menampilkan informasi pesanan yang sesuai.
+4. Sistem menampilkan produk yang dipesan dan jumlahnya.
+5. Sistem menampilkan total pembayaran.
+6. Sistem menampilkan status terkini pesanan berdasarkan data yang tersimpan.
+7. Jika status pesanan adalah Diproses, sistem menampilkan bahwa pesanan sedang diproses oleh admin.
+8. Jika status pesanan adalah Dikirim, sistem menampilkan bahwa pesanan sedang dalam perjalanan menuju customer.
+9. Jika status pesanan adalah Selesai, sistem menampilkan bahwa pesanan telah selesai.
+10. Jika nomor pesanan tidak ditemukan, sistem menampilkan pesan bahwa pesanan tidak tersedia.
 
 #### e. Use Case 5 (UC-05): Mengelola Toko
 
@@ -131,6 +137,8 @@ Admin dapat mengelola produk, stok, dan pesanan pelanggan melalui halaman admin.
 - Melihat daftar pesanan.
 - Melihat detail pesanan.
 - Memperbarui status pesanan.
+- Menentukan kurir pengiriman.
+- Memasukkan nomor resi pengiriman.
 
 **Validasi:**
 1. Admin dapat melihat daftar produk yang tersedia.
@@ -144,27 +152,9 @@ Admin dapat mengelola produk, stok, dan pesanan pelanggan melalui halaman admin.
 9. Admin dapat melihat daftar pesanan pelanggan.
 10. Admin dapat melihat detail pesanan.
 11. Admin dapat mengubah status pesanan menjadi Diproses, Dikirim, atau Selesai.
-12. Perubahan produk dan stok ditampilkan pada katalog produk.
-
-#### f. Use Case 6 (UC-06): Lacak Pesanan
-Customer dapat melacak perkembangan pesanan menggunakan nomor pesanan yang diperoleh setelah melakukan checkout. Melalui fitur ini, customer dapat mengetahui tahapan pemrosesan pesanan, mulai dari pesanan diproses oleh admin, dikirim, hingga selesai.
-
-**Fitur:**
-- Memasukkan nomor pesanan untuk melakukan pelacakan.
-- Menampilkan informasi nomor pesanan.
-- Menampilkan ringkasan pesanan.
-- Menampilkan status terkini pesanan.
-- Menampilkan tahapan status pesanan, yaitu Diproses, Dikirim, dan Selesai.
-
-**Validasi:**
-1. Customer harus memasukkan nomor pesanan untuk melakukan pelacakan.
-2. Sistem memeriksa apakah nomor pesanan tersedia.
-3. Jika nomor pesanan ditemukan, sistem menampilkan informasi pesanan yang sesuai.
-4. Sistem menampilkan status terkini pesanan berdasarkan data yang tersimpan.
-5. Jika status pesanan adalah Diproses, sistem menampilkan bahwa pesanan sedang diproses oleh admin.
-6. Jika status pesanan adalah Dikirim, sistem menampilkan bahwa pesanan sedang dalam perjalanan menuju customer.
-7. Jika status pesanan adalah Selesai, sistem menampilkan bahwa pesanan telah selesai.
-8. Jika nomor pesanan tidak ditemukan, sistem menampilkan pesan bahwa pesanan tidak tersedia.
+12. Admin dapat menentukan kurir ketika pesanan dikirim.
+13. Admin dapat memasukkan nomor resi pengiriman.
+14. Perubahan produk dan stok ditampilkan pada katalog produk.
 
 ### 3. Ringkasan Daftar Use Case
 
@@ -173,7 +163,7 @@ Customer dapat melacak perkembangan pesanan menggunakan nomor pesanan yang diper
 | UC-01 | Melihat Produk |
 | UC-02 | Mengelola Keranjang |
 | UC-03 | Checkout Pesanan |
-| UC-04 | Melihat Pesanan |
+| UC-04 | Melihat dan Melacak Pesanan |
 | UC-05 | Mengelola Toko |
 
 ### 4. Alur Penggunaan Website
@@ -189,7 +179,7 @@ Customer dapat melacak perkembangan pesanan menggunakan nomor pesanan yang diper
 7. Customer mengisi nama lengkap, nomor HP, alamat pengiriman, dan metode pembayaran.
 8. Sistem memvalidasi data dan ketersediaan stok.
 9. Jika berhasil, sistem membuat pesanan dan menampilkan nomor pesanan.
-10. Customer menggunakan nomor pesanan untuk melihat status pesanan.
+10. Customer memasukkan nomor pesanan untuk melihat dan melacak pesanan.
 11. Customer dapat melihat status pesanan mulai dari Diproses, Dikirim, hingga Selesai.
 
 #### Admin
@@ -200,4 +190,5 @@ Customer dapat melacak perkembangan pesanan menggunakan nomor pesanan yang diper
 4. Admin dapat memperbarui stok produk.
 5. Admin melihat detail pesanan pelanggan.
 6. Admin memperbarui status pesanan sesuai proses pemesanan.
-7. Perubahan produk, stok, dan status pesanan ditampilkan pada sistem.
+7. Admin menentukan kurir dan memasukkan nomor resi ketika pesanan dikirim.
+8. Perubahan produk, stok, dan status pesanan ditampilkan pada sistem.
