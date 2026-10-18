@@ -146,6 +146,26 @@ Admin dapat mengelola produk, stok, dan pesanan pelanggan melalui halaman admin.
 11. Admin dapat mengubah status pesanan menjadi Diproses, Dikirim, atau Selesai.
 12. Perubahan produk dan stok ditampilkan pada katalog produk.
 
+#### f. Use Case 6 (UC-06): Lacak Pesanan
+Customer dapat melacak perkembangan pesanan menggunakan nomor pesanan yang diperoleh setelah melakukan checkout. Melalui fitur ini, customer dapat mengetahui tahapan pemrosesan pesanan, mulai dari pesanan diproses oleh admin, dikirim, hingga selesai.
+
+**Fitur:**
+-Memasukkan nomor pesanan untuk melakukan pelacakan.
+-Menampilkan informasi nomor pesanan.
+-Menampilkan ringkasan pesanan.
+-Menampilkan status terkini pesanan.
+-Menampilkan tahapan status pesanan, yaitu Diproses, Dikirim, dan Selesai.
+
+**Validasi:**
+1. Customer harus memasukkan nomor pesanan untuk melakukan pelacakan.
+2. Sistem memeriksa apakah nomor pesanan tersedia.
+3. Jika nomor pesanan ditemukan, sistem menampilkan informasi pesanan yang sesuai.
+4. Sistem menampilkan status terkini pesanan berdasarkan data yang tersimpan.
+5. Jika status pesanan adalah Diproses, sistem menampilkan bahwa pesanan sedang diproses oleh admin.
+6. Jika status pesanan adalah Dikirim, sistem menampilkan bahwa pesanan sedang dalam perjalanan menuju customer.
+7. Jika status pesanan adalah Selesai, sistem menampilkan bahwa pesanan telah selesai.
+8. Jika nomor pesanan tidak ditemukan, sistem menampilkan pesan bahwa pesanan tidak tersedia.
+
 ### 3. Ringkasan Daftar Use Case
 
 | Kode | Nama Use Case |
