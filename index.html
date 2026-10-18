@@ -1,0 +1,164 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>MONOKROM — Toko Baju Online</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+<header class="topbar">
+  <div class="wrap bar">
+    <a href="#katalog" class="brand">MONO<span>KROM</span></a>
+    <nav class="nav">
+      <a href="#katalog" data-route="katalog">Katalog</a>
+      <a href="#pesanan" data-route="pesanan">Lacak Pesanan</a>
+      <a href="#keranjang" data-route="keranjang">Keranjang <b id="cartCount">0</b></a>
+    </nav>
+  </div>
+</header>
+
+<main>
+
+  <!-- ===== UC-01: KATALOG ===== -->
+  <section id="view-katalog" class="view">
+    <div class="hero">
+      <div class="wrap">
+        <small>Koleksi Terbaru</small>
+        <h1>Hitam.<br><em>Putih.</em> Tegas.</h1>
+        <p>Pakaian monokrom untuk keseharianmu. Pilih ukuran dan warna, checkout dalam hitungan menit.</p>
+        <button class="btn btn-primary" id="btnShop">Belanja Sekarang</button>
+      </div>
+    </div>
+    <div class="strip"><div id="strip"></div></div>
+
+    <div class="section" id="produk">
+      <div class="wrap">
+        <div class="sec-head">
+          <div>
+            <h2>Katalog Produk</h2>
+            <p id="resultInfo"></p>
+          </div>
+          <form class="search" id="searchForm" autocomplete="off">
+            <input type="search" id="search" placeholder="Cari nama produk...">
+          </form>
+        </div>
+        <div class="grid" id="productGrid"></div>
+        <div class="empty hidden" id="noResult">
+          <h3>Produk tidak ditemukan</h3>
+          <p>Coba gunakan kata kunci lain.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ===== UC-02: KERANJANG ===== -->
+  <section id="view-keranjang" class="view hidden">
+    <div class="wrap page">
+      <h1>Keranjang</h1>
+      <p class="sub">Atur jumlah produk sebelum checkout.</p>
+      <div class="layout">
+        <div class="panel" id="cartBody"></div>
+        <aside class="panel sticky" id="cartSummary">
+          <h3>Ringkasan</h3>
+          <div class="sum-line"><span>Total Item</span><span id="cartItems">0</span></div>
+          <div class="sum-total"><span>Total</span><span id="cartTotal">Rp 0</span></div>
+          <a href="#checkout" class="btn btn-primary btn-block" id="btnToCheckout">Lanjut Checkout</a>
+          <a href="#katalog" class="btn btn-ghost btn-block" style="margin-top:10px">Lanjut Belanja</a>
+        </aside>
+      </div>
+    </div>
+  </section>
+
+  <!-- ===== UC-03: CHECKOUT ===== -->
+  <section id="view-checkout" class="view hidden">
+    <div class="wrap page">
+      <h1>Checkout</h1>
+      <p class="sub">Isi data pemesanan dan pilih metode pembayaran.</p>
+      <div class="notice warn hidden" id="stockAlert"></div>
+      <form id="checkoutForm" novalidate>
+        <div class="layout">
+          <div class="panel">
+            <h3>Data Pemesanan</h3>
+            <div class="field" data-field="name">
+              <label for="cName">Nama Lengkap</label>
+              <input type="text" id="cName" placeholder="Nama penerima">
+              <small class="err" data-err="name"></small>
+            </div>
+            <div class="field" data-field="phone">
+              <label for="cPhone">Nomor HP</label>
+              <input type="tel" id="cPhone" placeholder="081234567890">
+              <small class="err" data-err="phone"></small>
+            </div>
+            <div class="field" data-field="address">
+              <label for="cAddress">Alamat Pengiriman</label>
+              <textarea id="cAddress" placeholder="Jalan, nomor, kelurahan, kota, provinsi, kode pos"></textarea>
+              <small class="err" data-err="address"></small>
+            </div>
+            <div class="field" data-field="payment">
+              <span class="lbl">Metode Pembayaran</span>
+              <div class="pay">
+                <label><input type="radio" name="payment" value="Transfer Bank"><span>Transfer Bank<small>Instruksi transfer dikirim setelah pesanan dibuat.</small></span></label>
+                <label><input type="radio" name="payment" value="E-Wallet"><span>E-Wallet<small>OVO, GoPay, DANA, ShopeePay.</small></span></label>
+                <label><input type="radio" name="payment" value="Bayar di Tempat (COD)"><span>Bayar di Tempat (COD)<small>Bayar tunai saat pesanan tiba.</small></span></label>
+              </div>
+              <small class="err" data-err="payment"></small>
+            </div>
+          </div>
+          <aside class="panel sticky">
+            <h3>Ringkasan Pesanan</h3>
+            <div id="checkoutSummary"></div>
+            <div class="sum-total"><span>Total</span><span id="checkoutTotal">Rp 0</span></div>
+            <button type="submit" class="btn btn-primary btn-block">Buat Pesanan</button>
+            <a href="#keranjang" class="btn btn-ghost btn-block" style="margin-top:10px">Kembali ke Keranjang</a>
+          </aside>
+        </div>
+      </form>
+    </div>
+  </section>
+
+  <!-- ===== Sukses ===== -->
+  <section id="view-sukses" class="view hidden">
+    <div class="wrap page">
+      <div class="panel success" id="successBody"></div>
+    </div>
+  </section>
+
+  <!-- ===== UC-04: LACAK PESANAN ===== -->
+  <section id="view-pesanan" class="view hidden">
+    <div class="wrap page">
+      <h1>Lacak Pesanan</h1>
+      <p class="sub">Masukkan nomor pesanan untuk melihat status pesananmu.</p>
+      <form class="track-form" id="trackForm" autocomplete="off">
+        <input type="text" id="trackInput" placeholder="Contoh: MK-XXXXXXXX">
+        <button class="btn btn-primary" type="submit">Cari</button>
+      </form>
+      <div id="trackResult" style="margin-top:30px"></div>
+    </div>
+  </section>
+
+</main>
+
+<footer class="foot">
+  <div class="wrap">
+    <span>&copy; 2026 MONOKROM. Seluruh hak cipta dilindungi.</span>
+    <a href="admin.html">Halaman Admin</a>
+  </div>
+</footer>
+
+<!-- Modal detail produk -->
+<div class="modal" id="modal">
+  <div class="modal-box">
+    <button class="modal-close" id="modalClose" aria-label="Tutup">&times;</button>
+    <div id="modalBody"></div>
+  </div>
+</div>
+
+<div class="toast" id="toast"></div>
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
+<script src="store.js"></script>
+<script src="customer.js"></script>
+</body>
+</html>
